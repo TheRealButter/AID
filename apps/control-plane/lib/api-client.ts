@@ -24,7 +24,7 @@ interface ApiResponse<T> {
   isServerError?: boolean;
 }
 
-const DEFAULT_OPTIONS: Required<ApiClientOptions> = {
+const DEFAULT_OPTIONS: ApiClientOptions = {
   timeout: 15000, // 15 seconds
   retries: 3,
   retryDelay: 1000,
@@ -36,7 +36,7 @@ class ApiClient {
   private supabase = createSupabaseBrowserClient();
 
   constructor(options: ApiClientOptions = {}) {
-    this.options = { ...DEFAULT_OPTIONS, ...options } as Required<ApiClientOptions>;
+    this.options = { ...DEFAULT_OPTIONS, ...options };
   }
 
   private async getAccessToken(): Promise<string> {
